@@ -9,6 +9,7 @@ CHECK {
     # ~ ' or set the ENDIANNESS environment variable to "big" or "little".'
 }
 
+sub MD4(       Str, Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
 sub MD5(       Str, Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
 sub SHA1(      Str, Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
 sub SHA256(    Str, Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
@@ -24,6 +25,9 @@ sub CArray2Buf($A, Int $length) returns Buf {
     Buf.new: map &splitint, $A[^$length];
 }
 
+our sub md4(Str $s) returns Buf is export {
+    CArray2Buf MD4( $s, $s.chars , Any ), 4;
+}
 our sub md5(Str $s) returns Buf is export {
     CArray2Buf MD5( $s, $s.chars , Any ), 4;
 }

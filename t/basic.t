@@ -1,7 +1,7 @@
 use SSL::Digest;
 use Test;
 
-plan 4;
+plan 5;
 
 my $test-string = 'The quick brown fox jumps over the lazy dog';
 sub openssl($dgst, $str = $test-string) {
@@ -12,6 +12,7 @@ sub openssl($dgst, $str = $test-string) {
     }
 }
 
+is md4($test-string).unpack('H*'), openssl('md4'), 'MD5';
 is md5($test-string).unpack('H*'), openssl('md5'), 'MD5';
 is sha1($test-string).unpack('H*'), openssl('sha1'), 'SHA-1';
 is sha256($test-string).unpack('H*'), openssl('sha256'), 'SHA-256';
