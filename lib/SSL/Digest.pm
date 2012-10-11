@@ -25,20 +25,22 @@ sub CArray2Buf($A, Int $length) returns Buf {
     Buf.new: map &splitint, $A[^$length];
 }
 
-our sub md4(Str $s) returns Buf is export {
-    CArray2Buf MD4( $s, $s.chars , Any ), 4;
-}
-our sub md5(Str $s) returns Buf is export {
-    CArray2Buf MD5( $s, $s.chars , Any ), 4;
-}
-our sub sha1(Str $s) returns Buf is export {
-    CArray2Buf SHA1( $s, $s.chars , Any ), 5;
-}
-our sub rmd160(Str $s) returns Buf is export {
-    CArray2Buf RIPEMD160( $s, $s.chars , Any ), 5;
-}
-our sub sha256(Str $s) returns Buf is export {
-    CArray2Buf SHA256( $s, $s.chars , Any ), 8;
-}
+proto md4($) returns Buf is export {*}
+proto md5($) returns Buf is export {*}
+proto sha1($) returns Buf is export {*}
+proto sha256($) returns Buf is export {*}
+proto rmd160($) returns Buf is export {*}
+
+multi md4(Str $s) { CArray2Buf MD4( $s, $s.chars , Any ), 4 }
+multi md5(Str $s) { CArray2Buf MD5( $s, $s.chars , Any ), 4 }
+multi sha1(Str $s) { CArray2Buf SHA1( $s, $s.chars , Any ), 5 }
+multi sha256(Str $s) { CArray2Buf SHA256( $s, $s.chars , Any ), 8 }
+multi rmd160(Str $s) { CArray2Buf RIPEMD160( $s, $s.chars , Any ), 5 }
+
+multi md4(Buf $b) { md4( [~] map &chr, $b.list ) }
+multi md5(Buf $b) { md5( [~] map &chr, $b.list ) }
+multi sha1(Buf $b) { sha1( [~] map &chr, $b.list ) }
+multi sha256(Buf $b) { sha256( [~] map &chr, $b.list ) }
+multi rmd160(Buf $b) { rmd160( [~] map &chr, $b.list ) }
 
 # vim: ft=perl6
