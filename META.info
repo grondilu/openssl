@@ -4,5 +4,5 @@
 	"description" : "Perl6 interface to OpenSSL",
 	"author" : "Lucien Grondin <grondilu@yahoo.fr>",
 	"depends" : [ "NativeCall" ],
-	"source-url" : "git@github.com:grondilu/openssl.git"
+	"source-url" : "git://github.com/grondilu/openssl.git"
 }
