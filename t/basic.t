@@ -1,9 +1,9 @@
 use SSL::Digest;
 use Test;
 
-plan *;
+plan 6;
 
-my Buf $random-bytes .= new: (^128).roll: 10.pick;
+my Buf $random-bytes = Buf.new: (^128).roll: 10.pick;
 sub openssl($dgst, Buf $bytes = $random-bytes) {
     my $hex = [~] map { sprintf "%02x", $_ }, $bytes.list;
     qqx{

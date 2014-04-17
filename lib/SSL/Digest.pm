@@ -9,11 +9,11 @@ CHECK {
     # ~ ' or set the ENDIANNESS environment variable to "big" or "little".'
 }
 
-sub MD4(    Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
-sub MD5(    Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
-sub SHA1(   Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
-sub SHA256( Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
-sub RIPEMD160( Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[int] is native('libssl') { * }
+sub MD4(    Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
+sub MD5(    Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
+sub SHA1(   Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
+sub SHA256( Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
+sub RIPEMD160( Str is encoded('utf8'), Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
 
 sub splitint(int $i) {
     my $n = $i < 0 ?? 256**4 + $i !! $i;
