@@ -9,7 +9,7 @@ CHECK {
     # ~ ' or set the ENDIANNESS environment variable to "big" or "little".'
 }
 
-sub MD2(    CArray[uint8], Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
+#sub MD2(    CArray[uint8], Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
 sub MD4(    CArray[uint8], Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
 sub MD5(    CArray[uint8], Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
 sub SHA(    CArray[uint8], Int, OpaquePointer ) returns CArray[uint32] is native('libssl') { * }
@@ -37,7 +37,7 @@ sub Buf2Args($buf) {
     return $array, $buf.bytes, Any;
 }
 
-proto md2($) returns Buf is export {*}
+#proto md2($) returns Buf is export {*}
 proto md4($) returns Buf is export {*}
 proto md5($) returns Buf is export {*}
 proto sha0($) returns Buf is export {*}
@@ -49,7 +49,7 @@ proto sha512($) returns Buf is export {*}
 proto rmd160($) returns Buf is export {*}
 proto whirlpool($) returns Buf is export {*}
 
-multi md2(Str $str) { md2($str.encode('utf8')) }
+#multi md2(Str $str) { md2($str.encode('utf8')) }
 multi md4(Str $str) { md4($str.encode('utf8')) }
 multi md5(Str $str) { md5($str.encode('utf8')) }
 multi sha0(Str $str) { sha0($str.encode('utf8')) }
@@ -61,7 +61,7 @@ multi sha512(Str $str) { sha512($str.encode('utf8')) }
 multi rmd160(Str $str) { rmd160($str.encode('utf8')) }
 multi whirlpool(Str $str) { whirlpool($str.encode('utf8')) }
 
-multi md2(Blob $buf) { CArray2Buf    MD2(    |Buf2Args($buf) ), 4 }
+#multi md2(Blob $buf) { CArray2Buf    MD2(    |Buf2Args($buf) ), 4 }
 multi md4(Blob $buf) { CArray2Buf    MD4(    |Buf2Args($buf) ), 4 }
 multi md5(Blob $buf) { CArray2Buf    MD5(    |Buf2Args($buf) ), 4 }
 multi sha0(Blob $buf) { CArray2Buf   SHA(    |Buf2Args($buf) ), 5 }
