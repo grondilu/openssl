@@ -1,6 +1,8 @@
 use SSL::Digest;
 use Test;
 
+use experimental :pack;
+
 plan 11;
 
 my Buf $random-bytes = Buf.new: (^128).roll: 10.pick;
