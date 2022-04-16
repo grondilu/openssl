@@ -1,6 +1,8 @@
 use SSL::Digest;
 use Test;
 
+use experimental :pack;
+
 plan 10;
 
 my $test-buffer = Buf.new: (^256).roll: 100.pick;
