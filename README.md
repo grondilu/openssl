@@ -1,3 +1,12 @@
+## Status
+
+**THIS REPO IS NOT MAINTAINED ANYMORE.**
+
+It is only left public for informative purpose.
+The license still applies, though.
+
+## Description
+
 Perl6 interface to OpenSSL.  So far only digests (SSL::Digest).
 
 Digests supported include md2, md4, md5, sha0, sha1, sha2 variants (as sha224,
